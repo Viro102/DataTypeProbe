@@ -1,0 +1,2 @@
+add_library(examples INTERFACE)
+target_link_libraries(examples INTERFACE ADTLib)
