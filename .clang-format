@@ -1,0 +1,5 @@
+BasedOnStyle: LLVM
+IndentWidth: 2
+Language: Cpp
+AlignAfterOpenBracket: BAS_BlockIndent
+ColumnLimit: 80

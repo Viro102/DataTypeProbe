@@ -25,14 +25,11 @@ private:
 
 // Here user of the library defines their Data structure to test
 using MyTypes = std::tuple<std::vector<int>, CustomContainer>;
-
+#define LIST_TEST MyTypes
 #include "../include/tester.h"
 
 int main(int argc, char *argv[]) {
-  std::vector<int> vec;
-  data_type_probe<std::vector<int>> tester;
-
-  int result = tester.run_all_tests(vec, argc, argv);
+  int result = data_type_probe::run_all_tests(argc, argv);
 
   return result;
 }
