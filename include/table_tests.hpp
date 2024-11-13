@@ -11,8 +11,7 @@
 
 TEMPLATE_LIST_TEST_CASE("Table ADT tests", "[table]", TESTS_LIST) {
   // These lines will be done b4 each section
-  std::cout << "Testing type: " + std::string(type_name<TestType>())
-            << std::endl;
+  std::cout << "Testing type: " << type_name<TestType>() << std::endl;
 
   TestType test_type;
 

@@ -1,3 +1,4 @@
+#include <cstddef>
 #include <map>
 #include <stdexcept>
 #include <vector>
@@ -16,27 +17,54 @@ template <typename T> struct custom_vec {
   size_t size() const { return data.size(); }
   bool empty() const { return data.empty(); }
   void clear() { data.clear(); }
-  T &front() { return data.front(); }
-  T &back() { return data.back(); }
-  T &at(size_t index) {
-    if (index >= data.size())
-      throw std::out_of_range("Index out of range");
-    return data.at(index);
+  void remove(size_t index) {
+    if (index < size()) {
+      data.erase(data.begin() + index);
+    } else {
+      throw std::out_of_range("out_of_range");
+    }
   }
+  void insert(size_t index, T value) {
+    if (index <= size()) {
+      data.insert(data.begin() + index, value);
+    } else {
+      throw std::out_of_range("out_of_range");
+    }
+  }
+
+  T &front() {
+    if (!data.empty()) {
+      return data.front();
+    } else {
+      throw std::out_of_range("Index out of range");
+    }
+  }
+  T &back() {
+    if (!data.empty()) {
+      return data.back();
+    } else {
+      throw std::out_of_range("Index out of range");
+    }
+  }
+  T &at(size_t index) { return data.at(index); }
+
+  // DEBUG
+  std::vector<T> &vector() { return data; }
 
 private:
   std::vector<T> data;
 };
 
 // Here user of the library defines their Data structure to test
-// TODO: test case for each ADT in separate files, user can include them as
+// Test cases for each ADT are in separate files, user can include them as
 // needed
 // using MyTypes =
 //     std::tuple<std::vector<int>, custom_vec<int>, std::map<int, int>>;
-using MyTypes = std::tuple<std::map<int, int>>;
+// using MyTypes = std::tuple<std::map<int, int>>;
+using MyTypes = std::tuple<custom_vec<int>, std::vector<int>>;
 #define TESTS_LIST MyTypes
-// #include <list_tests.hpp>
-#include <table_tests.hpp>
+#include <list_tests.hpp>
+// #include <table_tests.hpp>
 
 int main(int argc, char *argv[]) {
   int result = data_type_probe::run_tests(argc, argv);
