@@ -61,10 +61,11 @@ private:
 // using MyTypes =
 //     std::tuple<std::vector<int>, custom_vec<int>, std::map<int, int>>;
 // using MyTypes = std::tuple<std::map<int, int>>;
-using MyTypes = std::tuple<custom_vec<int>, std::vector<int>>;
+// using MyTypes = std::tuple<custom_vec<int>, std::vector<int>>;
+using MyTypes = std::tuple<std::map<int, int>>;
 #define TESTS_LIST MyTypes
-#include <list_tests.hpp>
-// #include <table_tests.hpp>
+// #include <list_tests.hpp>
+#include <table_tests.hpp>
 
 int main(int argc, char *argv[]) {
   int result = data_type_probe::run_tests(argc, argv);
