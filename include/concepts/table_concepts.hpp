@@ -5,13 +5,6 @@
 
 namespace table_concepts {
 
-// Has capacity concept - checks if the type has a capacity() method that
-// returns a size_t
-template <typename T>
-concept has_capacity = requires(const T &t) {
-  { t.capacity() } -> std::convertible_to<std::size_t>;
-};
-
 // Iterator concept helper to check if the type provides the required iterator
 // operations
 template <typename T>
@@ -24,7 +17,7 @@ concept has_iterator = requires(T t) {
     {
       *it
     } -> std::convertible_to<
-        std::pair<const typename T::key_type, typename T::mapped_type>>;
+          std::pair<const typename T::key_type, typename T::mapped_type>>;
   };
   // Check if type can be used in range-based for loop
   requires std::ranges::range<T>;
@@ -39,7 +32,7 @@ concept has_const_iterator = requires(const T t) {
     {
       *it
     } -> std::convertible_to<
-        const std::pair<const typename T::key_type, typename T::mapped_type>>;
+          const std::pair<const typename T::key_type, typename T::mapped_type>>;
   };
   requires std::ranges::range<const T>;
 };

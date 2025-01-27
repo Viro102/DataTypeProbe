@@ -1,5 +1,7 @@
 #include <cstddef>
 #include <map>
+#include <queue>
+#include <stack>
 #include <stdexcept>
 #include <vector>
 
@@ -58,14 +60,22 @@ private:
 // Here user of the library defines their Data structure to test
 // Test cases for each ADT are in separate files, user can include them as
 // needed
-// using MyTypes =
-//     std::tuple<std::vector<int>, custom_vec<int>, std::map<int, int>>;
-// using MyTypes = std::tuple<std::map<int, int>>;
+// LIST ADT
 // using MyTypes = std::tuple<custom_vec<int>, std::vector<int>>;
-using MyTypes = std::tuple<std::map<int, int>>;
+// TABLE ADT
+// using MyTypes = std::tuple<std::map<int, int>>;
+// STACK ADT
+// using MyTypes = std::tuple<std::stack<int>>;
+// QUEUE ADT
+// using MyTypes = std::tuple<std::queue<int>>;
+// PRIORITY QUEUE ADT
+using MyTypes = std::tuple<std::priority_queue<int>>;
 #define TESTS_LIST MyTypes
 // #include <list_tests.hpp>
-#include <table_tests.hpp>
+// #include <table_tests.hpp>
+// #include <stack_tests.hpp>
+// #include <queue_tests.hpp>
+#include <priority_queue_tests.hpp>
 
 int main(int argc, char *argv[]) {
   int result = data_type_probe::run_tests(argc, argv);

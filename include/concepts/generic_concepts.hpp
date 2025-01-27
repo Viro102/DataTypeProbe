@@ -18,4 +18,11 @@ concept has_clear = requires(T structure) {
   { structure.clear() };
 };
 
+// Has capacity concept - checks if the type has a capacity() method that
+// returns a size_t
+template <typename T>
+concept has_capacity = requires(const T &t) {
+  { t.capacity() } -> std::convertible_to<std::size_t>;
+};
+
 } // namespace generic_concepts

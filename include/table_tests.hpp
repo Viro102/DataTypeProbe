@@ -149,7 +149,7 @@ TEMPLATE_LIST_TEST_CASE("Table ADT tests", "[table]", TESTS_LIST) {
       }
     }
 
-    if constexpr (table_concepts::has_capacity<TestType>) {
+    if constexpr (generic_concepts::has_capacity<TestType>) {
       SECTION("Capacity Tests") {
         size_t initial_capacity = test_type.capacity();
         std::vector<std::pair<int, int>> pairs;
